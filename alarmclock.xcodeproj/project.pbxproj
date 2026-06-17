@@ -1,0 +1,469 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA000001000000000000001 /* alarmclockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000001 /* alarmclockApp.swift */; };
+		AA000001000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000002 /* ContentView.swift */; };
+		AA000001000000000000003 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000003 /* AppState.swift */; };
+		AA000001000000000000004 /* AlarmListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000004 /* AlarmListView.swift */; };
+		AA000001000000000000005 /* AlarmEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000005 /* AlarmEditorView.swift */; };
+		AA000001000000000000006 /* AlarmFireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000006 /* AlarmFireView.swift */; };
+		AA000001000000000000007 /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000007 /* AlarmViewModel.swift */; };
+		AA000001000000000000008 /* AlarmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000008 /* AlarmService.swift */; };
+		AA000001000000000000009 /* MissionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000009 /* MissionRouter.swift */; };
+		AA00000100000000000000A /* MathMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10000100000000000000A /* MathMissionView.swift */; };
+		AA00000100000000000000B /* ShakeMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10000100000000000000B /* ShakeMissionView.swift */; };
+		AA00000100000000000000C /* MemoryMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10000100000000000000C /* MemoryMissionView.swift */; };
+		AA00000100000000000000D /* TypingMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10000100000000000000D /* TypingMissionView.swift */; };
+		AA00000100000000000000E /* SquatMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10000100000000000000E /* SquatMissionView.swift */; };
+		AA00000100000000000000F /* BarcodeMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10000100000000000000F /* BarcodeMissionView.swift */; };
+		AA000001000000000000010 /* PhotoMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000010 /* PhotoMissionView.swift */; };
+		AA000001000000000000011 /* StepMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000011 /* StepMissionView.swift */; };
+		AA000001000000000000012 /* SleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000012 /* SleepView.swift */; };
+		AA000001000000000000013 /* SoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000013 /* SoundsView.swift */; };
+		AA000001000000000000014 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000014 /* Alarm.swift */; };
+		AA000001000000000000015 /* MissionConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000015 /* MissionConfig.swift */; };
+		AA000001000000000000016 /* SleepSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000016 /* SleepSession.swift */; };
+		AA000001000000000000017 /* SoundTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000017 /* SoundTrack.swift */; };
+		AA000001000000000000018 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000018 /* MotionManager.swift */; };
+		AA000001000000000000019 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000019 /* NotificationManager.swift */; };
+		AA00000100000000000001A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA10000100000000000001A /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA100001000000000000001 /* alarmclockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alarmclockApp.swift; sourceTree = "<group>"; };
+		AA100001000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AA100001000000000000003 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		AA100001000000000000004 /* AlarmListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListView.swift; sourceTree = "<group>"; };
+		AA100001000000000000005 /* AlarmEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEditorView.swift; sourceTree = "<group>"; };
+		AA100001000000000000006 /* AlarmFireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmFireView.swift; sourceTree = "<group>"; };
+		AA100001000000000000007 /* AlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModel.swift; sourceTree = "<group>"; };
+		AA100001000000000000008 /* AlarmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmService.swift; sourceTree = "<group>"; };
+		AA100001000000000000009 /* MissionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionRouter.swift; sourceTree = "<group>"; };
+		AA10000100000000000000A /* MathMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathMissionView.swift; sourceTree = "<group>"; };
+		AA10000100000000000000B /* ShakeMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeMissionView.swift; sourceTree = "<group>"; };
+		AA10000100000000000000C /* MemoryMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryMissionView.swift; sourceTree = "<group>"; };
+		AA10000100000000000000D /* TypingMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingMissionView.swift; sourceTree = "<group>"; };
+		AA10000100000000000000E /* SquatMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquatMissionView.swift; sourceTree = "<group>"; };
+		AA10000100000000000000F /* BarcodeMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeMissionView.swift; sourceTree = "<group>"; };
+		AA100001000000000000010 /* PhotoMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMissionView.swift; sourceTree = "<group>"; };
+		AA100001000000000000011 /* StepMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepMissionView.swift; sourceTree = "<group>"; };
+		AA100001000000000000012 /* SleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepView.swift; sourceTree = "<group>"; };
+		AA100001000000000000013 /* SoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsView.swift; sourceTree = "<group>"; };
+		AA100001000000000000014 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		AA100001000000000000015 /* MissionConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionConfig.swift; sourceTree = "<group>"; };
+		AA100001000000000000016 /* SleepSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepSession.swift; sourceTree = "<group>"; };
+		AA100001000000000000017 /* SoundTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTrack.swift; sourceTree = "<group>"; };
+		AA100001000000000000018 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		AA100001000000000000019 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		AA10000100000000000001A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA10000100000000000001B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA10000100000000000001C /* alarmclock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alarmclock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA200001000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA300001000000000000001 /* alarmclock */ = {
+			isa = PBXGroup;
+			children = (
+				AA100001000000000000001 /* alarmclockApp.swift */,
+				AA100001000000000000002 /* ContentView.swift */,
+				AA100001000000000000003 /* AppState.swift */,
+				AA10000100000000000001A /* Assets.xcassets */,
+				AA10000100000000000001B /* Info.plist */,
+				AA300001000000000000002 /* Alarm */,
+				AA300001000000000000003 /* Missions */,
+				AA300001000000000000004 /* Sleep */,
+				AA300001000000000000005 /* Sounds */,
+				AA300001000000000000006 /* Models */,
+				AA300001000000000000007 /* Utilities */,
+			);
+			path = alarmclock;
+			sourceTree = "<group>";
+		};
+		AA300001000000000000002 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				AA100001000000000000004 /* AlarmListView.swift */,
+				AA100001000000000000005 /* AlarmEditorView.swift */,
+				AA100001000000000000006 /* AlarmFireView.swift */,
+				AA100001000000000000007 /* AlarmViewModel.swift */,
+				AA100001000000000000008 /* AlarmService.swift */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
+		AA300001000000000000003 /* Missions */ = {
+			isa = PBXGroup;
+			children = (
+				AA100001000000000000009 /* MissionRouter.swift */,
+				AA10000100000000000000A /* MathMissionView.swift */,
+				AA10000100000000000000B /* ShakeMissionView.swift */,
+				AA10000100000000000000C /* MemoryMissionView.swift */,
+				AA10000100000000000000D /* TypingMissionView.swift */,
+				AA10000100000000000000E /* SquatMissionView.swift */,
+				AA10000100000000000000F /* BarcodeMissionView.swift */,
+				AA100001000000000000010 /* PhotoMissionView.swift */,
+				AA100001000000000000011 /* StepMissionView.swift */,
+			);
+			path = Missions;
+			sourceTree = "<group>";
+		};
+		AA300001000000000000004 /* Sleep */ = {
+			isa = PBXGroup;
+			children = (
+				AA100001000000000000012 /* SleepView.swift */,
+			);
+			path = Sleep;
+			sourceTree = "<group>";
+		};
+		AA300001000000000000005 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				AA100001000000000000013 /* SoundsView.swift */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		AA300001000000000000006 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA100001000000000000014 /* Alarm.swift */,
+				AA100001000000000000015 /* MissionConfig.swift */,
+				AA100001000000000000016 /* SleepSession.swift */,
+				AA100001000000000000017 /* SoundTrack.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA300001000000000000007 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AA100001000000000000018 /* MotionManager.swift */,
+				AA100001000000000000019 /* NotificationManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		AA300001000000000000008 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA10000100000000000001C /* alarmclock.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA300001000000000000009 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				AA300001000000000000001 /* alarmclock */,
+				AA300001000000000000008 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA400001000000000000001 /* alarmclock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA500001000000000000002 /* Build configuration list for PBXNativeTarget "alarmclock" */;
+			buildPhases = (
+				AA600001000000000000001 /* Sources */,
+				AA200001000000000000001 /* Frameworks */,
+				AA700001000000000000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = alarmclock;
+			productName = alarmclock;
+			productReference = AA10000100000000000001C /* alarmclock.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA800001000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AA400001000000000000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = AA500001000000000000001 /* Build configuration list for PBXProject "alarmclock" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA300001000000000000009 /* main */;
+			productRefGroup = AA300001000000000000008 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA400001000000000000001 /* alarmclock */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA700001000000000000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA00000100000000000001A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA600001000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000001000000000000001 /* alarmclockApp.swift in Sources */,
+				AA000001000000000000002 /* ContentView.swift in Sources */,
+				AA000001000000000000003 /* AppState.swift in Sources */,
+				AA000001000000000000004 /* AlarmListView.swift in Sources */,
+				AA000001000000000000005 /* AlarmEditorView.swift in Sources */,
+				AA000001000000000000006 /* AlarmFireView.swift in Sources */,
+				AA000001000000000000007 /* AlarmViewModel.swift in Sources */,
+				AA000001000000000000008 /* AlarmService.swift in Sources */,
+				AA000001000000000000009 /* MissionRouter.swift in Sources */,
+				AA00000100000000000000A /* MathMissionView.swift in Sources */,
+				AA00000100000000000000B /* ShakeMissionView.swift in Sources */,
+				AA00000100000000000000C /* MemoryMissionView.swift in Sources */,
+				AA00000100000000000000D /* TypingMissionView.swift in Sources */,
+				AA00000100000000000000E /* SquatMissionView.swift in Sources */,
+				AA00000100000000000000F /* BarcodeMissionView.swift in Sources */,
+				AA000001000000000000010 /* PhotoMissionView.swift in Sources */,
+				AA000001000000000000011 /* StepMissionView.swift in Sources */,
+				AA000001000000000000012 /* SleepView.swift in Sources */,
+				AA000001000000000000013 /* SoundsView.swift in Sources */,
+				AA000001000000000000014 /* Alarm.swift in Sources */,
+				AA000001000000000000015 /* MissionConfig.swift in Sources */,
+				AA000001000000000000016 /* SleepSession.swift in Sources */,
+				AA000001000000000000017 /* SoundTrack.swift in Sources */,
+				AA000001000000000000018 /* MotionManager.swift in Sources */,
+				AA000001000000000000019 /* NotificationManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA900001000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA900001000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA900001000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = alarmclock/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zacharysousa.alarmclock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AA900001000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = alarmclock/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zacharysousa.alarmclock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA500001000000000000001 /* Build configuration list for PBXProject "alarmclock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA900001000000000000001 /* Debug */,
+				AA900001000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA500001000000000000002 /* Build configuration list for PBXNativeTarget "alarmclock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA900001000000000000003 /* Debug */,
+				AA900001000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = AA800001000000000000001 /* Project object */;
+}
