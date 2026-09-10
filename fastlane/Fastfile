@@ -1,0 +1,50 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Build alarmclock and upload a new build to TestFlight"
+  lane :beta do
+    setup_ci
+
+    import_certificate(
+      certificate_path: ENV.fetch("CERTIFICATE_PATH"),
+      certificate_password: ENV.fetch("CERTIFICATE_PASSWORD")
+    )
+
+    install_provisioning_profile(path: ENV.fetch("PROVISIONING_PROFILE_PATH"))
+
+    # Switches this one CI checkout from the project's default Automatic
+    # signing to the imported distribution cert + profile. Never committed.
+    update_code_signing_settings(
+      use_automatic_signing: false,
+      path: "alarmclock.xcodeproj",
+      code_sign_identity: "Apple Distribution",
+      profile_name: ENV.fetch("PROFILE_NAME"),
+      team_id: ENV.fetch("APPLE_TEAM_ID"),
+      targets: ["alarmclock"]
+    )
+
+    increment_build_number(
+      xcodeproj: "alarmclock.xcodeproj",
+      build_number: ENV.fetch("BUILD_NUMBER")
+    )
+
+    build_app(
+      project: "alarmclock.xcodeproj",
+      scheme: "alarmclock",
+      output_directory: "build",
+      export_options: {
+        method: "app-store",
+        signingStyle: "manual",
+        teamID: ENV.fetch("APPLE_TEAM_ID"),
+        provisioningProfiles: {
+          "com.zacharysousa.alarmclock" => ENV.fetch("PROFILE_NAME")
+        }
+      }
+    )
+
+    upload_to_testflight(
+      api_key_path: ENV.fetch("APP_STORE_CONNECT_API_KEY_PATH"),
+      skip_waiting_for_build_processing: true
+    )
+  end
+end
