@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 private let cycleMinutes = 90
-private let fallAsleepMinutes = 14
+private let defaultFallAsleepMinutes: Double = 14
 
 struct SleepCycleResult: Identifiable {
     let id = UUID()
@@ -24,21 +24,23 @@ struct SleepCycleCalculatorView: View {
     @State private var mode: Mode = .wakeUp
     @State private var wakeTime: Date = Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: Date()) ?? Date()
     @State private var now = Date()
+    @State private var fallAsleepMinutes: Double = defaultFallAsleepMinutes
     @State private var confirmationMessage: String?
 
     private let cycleOptions = [6, 5, 4, 3]
     private let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
 
     private var results: [SleepCycleResult] {
+        let fallAsleepSeconds = TimeInterval(fallAsleepMinutes * 60)
         switch mode {
         case .wakeUp:
             return cycleOptions.map { cycles in
                 let sleepDuration = TimeInterval(cycles * cycleMinutes * 60)
-                let bedtime = wakeTime.addingTimeInterval(-sleepDuration - TimeInterval(fallAsleepMinutes * 60))
+                let bedtime = wakeTime.addingTimeInterval(-sleepDuration - fallAsleepSeconds)
                 return SleepCycleResult(time: bedtime, cycles: cycles)
             }
         case .sleepNow:
-            let fallAsleepTime = now.addingTimeInterval(TimeInterval(fallAsleepMinutes * 60))
+            let fallAsleepTime = now.addingTimeInterval(fallAsleepSeconds)
             return cycleOptions.reversed().map { cycles in
                 let wake = fallAsleepTime.addingTimeInterval(TimeInterval(cycles * cycleMinutes * 60))
                 return SleepCycleResult(time: wake, cycles: cycles)
@@ -108,14 +110,18 @@ struct SleepCycleCalculatorView: View {
     }
 
     private var wakeTimePicker: some View {
-        VStack(spacing: 8) {
-            Text("I WANT TO WAKE UP AT")
-                .font(.caption.bold())
-                .foregroundStyle(.gray)
-            DatePicker("Wake time", selection: $wakeTime, displayedComponents: .hourAndMinute)
-                .datePickerStyle(.wheel)
-                .labelsHidden()
-                .colorScheme(.dark)
+        VStack(spacing: 20) {
+            VStack(spacing: 8) {
+                Text("I WANT TO WAKE UP AT")
+                    .font(.caption.bold())
+                    .foregroundStyle(.gray)
+                DatePicker("Wake time", selection: $wakeTime, displayedComponents: .hourAndMinute)
+                    .datePickerStyle(.wheel)
+                    .labelsHidden()
+                    .colorScheme(.dark)
+            }
+
+            fallAsleepSlider
         }
         .padding()
         .background(Color(white: 0.1))
@@ -123,18 +129,38 @@ struct SleepCycleCalculatorView: View {
     }
 
     private var sleepNowCard: some View {
-        VStack(spacing: 4) {
-            Text("IF YOU FALL ASLEEP IN ~\(fallAsleepMinutes) MIN")
-                .font(.caption.bold())
-                .foregroundStyle(.gray)
-            Text(now, style: .time)
-                .font(.system(size: 42, weight: .thin, design: .rounded))
-                .foregroundStyle(.white)
+        VStack(spacing: 20) {
+            VStack(spacing: 4) {
+                Text("IT'S CURRENTLY")
+                    .font(.caption.bold())
+                    .foregroundStyle(.gray)
+                Text(now, style: .time)
+                    .font(.system(size: 42, weight: .thin, design: .rounded))
+                    .foregroundStyle(.white)
+            }
+
+            fallAsleepSlider
         }
         .frame(maxWidth: .infinity)
         .padding()
         .background(Color(white: 0.1))
         .clipShape(RoundedRectangle(cornerRadius: 16))
+    }
+
+    private var fallAsleepSlider: some View {
+        VStack(spacing: 10) {
+            HStack {
+                Text("TIME TO FALL ASLEEP")
+                    .font(.caption.bold())
+                    .foregroundStyle(.gray)
+                Spacer()
+                Text("\(Int(fallAsleepMinutes)) min")
+                    .font(.caption.bold())
+                    .foregroundStyle(.purple)
+            }
+            Slider(value: $fallAsleepMinutes, in: 0...45, step: 1)
+                .tint(.purple)
+        }
     }
 
     private var resultsList: some View {
