@@ -33,6 +33,9 @@
 		AA000001000000000000018 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000018 /* MotionManager.swift */; };
 		AA000001000000000000019 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000019 /* NotificationManager.swift */; };
 		AA00000100000000000001A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA10000100000000000001A /* Assets.xcassets */; };
+		AA000001000000000000020 /* TouchMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000020 /* TouchMissionView.swift */; };
+		AA000001000000000000021 /* BedtimeReminderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000021 /* BedtimeReminderService.swift */; };
+		AA000001000000000000022 /* SleepCycleCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001000000000000022 /* SleepCycleCalculatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +67,9 @@
 		AA10000100000000000001A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA10000100000000000001B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA10000100000000000001C /* alarmclock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alarmclock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA100001000000000000020 /* TouchMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchMissionView.swift; sourceTree = "<group>"; };
+		AA100001000000000000021 /* BedtimeReminderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedtimeReminderService.swift; sourceTree = "<group>"; };
+		AA100001000000000000022 /* SleepCycleCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepCycleCalculatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,7 @@
 				AA300001000000000000005 /* Sounds */,
 				AA300001000000000000006 /* Models */,
 				AA300001000000000000007 /* Utilities */,
+				AA30000100000000000000A /* SleepCycle */,
 			);
 			path = alarmclock;
 			sourceTree = "<group>";
@@ -119,6 +126,7 @@
 				AA10000100000000000000F /* BarcodeMissionView.swift */,
 				AA100001000000000000010 /* PhotoMissionView.swift */,
 				AA100001000000000000011 /* StepMissionView.swift */,
+				AA100001000000000000020 /* TouchMissionView.swift */,
 			);
 			path = Missions;
 			sourceTree = "<group>";
@@ -155,8 +163,17 @@
 			children = (
 				AA100001000000000000018 /* MotionManager.swift */,
 				AA100001000000000000019 /* NotificationManager.swift */,
+				AA100001000000000000021 /* BedtimeReminderService.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		AA30000100000000000000A /* SleepCycle */ = {
+			isa = PBXGroup;
+			children = (
+				AA100001000000000000022 /* SleepCycleCalculatorView.swift */,
+			);
+			path = SleepCycle;
 			sourceTree = "<group>";
 		};
 		AA300001000000000000008 /* Products */ = {
@@ -269,6 +286,9 @@
 				AA000001000000000000017 /* SoundTrack.swift in Sources */,
 				AA000001000000000000018 /* MotionManager.swift in Sources */,
 				AA000001000000000000019 /* NotificationManager.swift in Sources */,
+				AA000001000000000000020 /* TouchMissionView.swift in Sources */,
+				AA000001000000000000021 /* BedtimeReminderService.swift in Sources */,
+				AA000001000000000000022 /* SleepCycleCalculatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

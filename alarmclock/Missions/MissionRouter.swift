@@ -22,6 +22,8 @@ struct MissionRouter: View {
             PhotoMissionView(mission: mission, onComplete: onComplete)
         case .step:
             StepMissionView(mission: mission, onComplete: onComplete)
+        case .touch:
+            TouchMissionView(mission: mission, onComplete: onComplete)
         }
     }
 }

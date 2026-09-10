@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 enum MissionType: String, Codable, CaseIterable, Identifiable {
-    case math, memory, shake, typing, squat, barcode, photo, step
+    case math, memory, shake, typing, squat, barcode, photo, step, touch
 
     var id: String { rawValue }
 
@@ -16,6 +16,7 @@ enum MissionType: String, Codable, CaseIterable, Identifiable {
         case .barcode: return "Barcode"
         case .photo: return "Photo"
         case .step: return "Step"
+        case .touch: return "Touch"
         }
     }
 
@@ -29,6 +30,7 @@ enum MissionType: String, Codable, CaseIterable, Identifiable {
         case .barcode: return "barcode.viewfinder"
         case .photo: return "camera"
         case .step: return "figure.walk"
+        case .touch: return "hand.tap.fill"
         }
     }
 
@@ -42,6 +44,7 @@ enum MissionType: String, Codable, CaseIterable, Identifiable {
         case .barcode: return 1
         case .photo: return 1
         case .step: return 100
+        case .touch: return 20
         }
     }
 }

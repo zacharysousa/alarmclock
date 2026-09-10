@@ -5,43 +5,72 @@ import AVFoundation
 final class AudioPlayerService {
     static let shared = AudioPlayerService()
 
-    var currentTrackID: String?
-    var isPlaying = false
-    var volume: Float = 0.8
+    /// Track IDs currently mixed in, each with its own relative volume (0...1).
+    var activeTrackVolumes: [String: Float] = [:]
+    var masterVolume: Float = 0.8
     var sleepTimerMinutes: Int = 0
     var sleepTimerRemaining: TimeInterval = 0
 
-    private var player: AVAudioPlayer?
+    var isPlaying: Bool { !players.isEmpty }
+
+    private var players: [String: AVAudioPlayer] = [:]
     private var sleepTimer: Timer?
     private var fadeTimer: Timer?
 
     private init() {}
 
+    func isActive(_ trackID: String) -> Bool {
+        players[trackID] != nil
+    }
+
+    func toggle(track: SoundTrack) {
+        if isActive(track.id) {
+            stop(trackID: track.id)
+        } else {
+            play(track: track)
+        }
+    }
+
     func play(track: SoundTrack) {
-        stop()
-        currentTrackID = track.id
+        guard players[track.id] == nil else { return }
         configureSession()
         guard let url = Bundle.main.url(forResource: track.filename.replacingOccurrences(of: ".mp3", with: ""), withExtension: "mp3") else { return }
         do {
-            player = try AVAudioPlayer(contentsOf: url)
-            player?.volume = volume
-            player?.numberOfLoops = -1
-            player?.play()
-            isPlaying = true
+            let newPlayer = try AVAudioPlayer(contentsOf: url)
+            let trackVolume: Float = activeTrackVolumes[track.id] ?? 1.0
+            newPlayer.volume = trackVolume * masterVolume
+            newPlayer.numberOfLoops = -1
+            newPlayer.play()
+            players[track.id] = newPlayer
+            activeTrackVolumes[track.id] = trackVolume
         } catch {}
     }
 
-    func stop() {
-        player?.stop()
-        player = nil
-        isPlaying = false
-        currentTrackID = nil
+    func stop(trackID: String) {
+        players[trackID]?.stop()
+        players[trackID] = nil
+        activeTrackVolumes[trackID] = nil
+        if players.isEmpty { cancelTimer() }
+    }
+
+    func stopAll() {
+        for player in players.values { player.stop() }
+        players.removeAll()
+        activeTrackVolumes.removeAll()
         cancelTimer()
     }
 
-    func setVolume(_ value: Float) {
-        volume = value
-        player?.volume = value
+    func setTrackVolume(_ trackID: String, volume: Float) {
+        activeTrackVolumes[trackID] = volume
+        players[trackID]?.volume = volume * masterVolume
+    }
+
+    func setMasterVolume(_ value: Float) {
+        masterVolume = value
+        for (id, player) in players {
+            let trackVolume = activeTrackVolumes[id] ?? 1.0
+            player.volume = trackVolume * value
+        }
     }
 
     func setSleepTimer(minutes: Int) {
@@ -57,18 +86,20 @@ final class AudioPlayerService {
         sleepTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             guard let self else { return }
             sleepTimerRemaining -= 1
-            if sleepTimerRemaining <= 0 { stop() }
+            if sleepTimerRemaining <= 0 { stopAll() }
         }
     }
 
     private func startFadeOut() {
-        let startVolume = player?.volume ?? volume
+        let startVolumes = activeTrackVolumes
         var elapsed: TimeInterval = 0
         fadeTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             guard let self else { return }
             elapsed += 1
-            let fraction = 1.0 - (elapsed / 300.0)
-            player?.volume = Float(max(0, fraction)) * startVolume
+            let fraction = Float(max(0, 1.0 - (elapsed / 300.0)))
+            for (id, base) in startVolumes {
+                players[id]?.volume = fraction * base * masterVolume
+            }
         }
     }
 
@@ -85,12 +116,16 @@ final class AudioPlayerService {
 }
 
 struct SoundsView: View {
-    private let service = AudioPlayerService.shared
+    @State private var service = AudioPlayerService.shared
     @State private var selectedCategory: SoundCategory = .nature
     @State private var showTimerPicker = false
 
     private var filteredTracks: [SoundTrack] {
         SoundTrack.library.filter { $0.category == selectedCategory }
+    }
+
+    private var activeTracks: [SoundTrack] {
+        SoundTrack.library.filter { service.isActive($0.id) }
     }
 
     var body: some View {
@@ -100,7 +135,15 @@ struct SoundsView: View {
 
                 VStack(spacing: 0) {
                     categoryTabs
-                    soundGrid
+                    ScrollView {
+                        VStack(spacing: 20) {
+                            soundGrid
+                            if !activeTracks.isEmpty {
+                                mixerSection
+                            }
+                        }
+                        .padding(.bottom, 16)
+                    }
                     Divider().background(Color.gray.opacity(0.2))
                     volumeBar
                 }
@@ -114,7 +157,7 @@ struct SoundsView: View {
                     Button {
                         showTimerPicker = true
                     } label: {
-                        Image(systemName: service.sleepTimerRemaining > 0 ? "timer" : "timer")
+                        Image(systemName: "timer")
                             .foregroundStyle(service.sleepTimerRemaining > 0 ? .orange : .gray)
                     }
                 }
@@ -148,14 +191,55 @@ struct SoundsView: View {
     }
 
     private var soundGrid: some View {
-        ScrollView {
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-                ForEach(filteredTracks) { track in
-                    SoundCardView(track: track, service: service)
+        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+            ForEach(filteredTracks) { track in
+                SoundCardView(track: track, service: service)
+            }
+        }
+        .padding(.horizontal)
+        .padding(.top, 12)
+    }
+
+    private var mixerSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("MIXING \(activeTracks.count) SOUND\(activeTracks.count == 1 ? "" : "S")")
+                .font(.caption.bold())
+                .foregroundStyle(.gray)
+                .padding(.horizontal)
+
+            VStack(spacing: 8) {
+                ForEach(activeTracks) { track in
+                    mixerRow(track)
                 }
             }
-            .padding()
+            .padding(.horizontal)
         }
+    }
+
+    private func mixerRow(_ track: SoundTrack) -> some View {
+        HStack(spacing: 12) {
+            Text(track.name)
+                .font(.caption.bold())
+                .foregroundStyle(.white)
+                .frame(width: 90, alignment: .leading)
+
+            Slider(value: Binding(
+                get: { Double(service.activeTrackVolumes[track.id] ?? 1.0) },
+                set: { service.setTrackVolume(track.id, volume: Float($0)) }
+            ))
+            .tint(.orange)
+
+            Button {
+                service.stop(trackID: track.id)
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .foregroundStyle(.gray)
+            }
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(Color(white: 0.1))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
     private var volumeBar: some View {
@@ -163,8 +247,8 @@ struct SoundsView: View {
             Image(systemName: "speaker.fill")
                 .foregroundStyle(.gray)
             Slider(value: Binding(
-                get: { Double(service.volume) },
-                set: { service.setVolume(Float($0)) }
+                get: { Double(service.masterVolume) },
+                set: { service.setMasterVolume(Float($0)) }
             ))
             .tint(.white)
             Image(systemName: "speaker.wave.3.fill")
@@ -178,7 +262,7 @@ struct SoundCardView: View {
     let track: SoundTrack
     let service: AudioPlayerService
 
-    private var isActive: Bool { service.currentTrackID == track.id }
+    private var isActive: Bool { service.isActive(track.id) }
 
     private var icon: String {
         switch track.id {
@@ -197,11 +281,7 @@ struct SoundCardView: View {
 
     var body: some View {
         Button {
-            if isActive {
-                service.stop()
-            } else {
-                service.play(track: track)
-            }
+            service.toggle(track: track)
         } label: {
             VStack(spacing: 12) {
                 ZStack {

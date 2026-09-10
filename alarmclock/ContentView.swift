@@ -13,17 +13,23 @@ struct ContentView: View {
                     }
                     .tag(0)
 
+                SleepCycleCalculatorView()
+                    .tabItem {
+                        Label("Cycles", systemImage: "bed.double.fill")
+                    }
+                    .tag(1)
+
                 SleepView()
                     .tabItem {
                         Label("Sleep", systemImage: "moon.fill")
                     }
-                    .tag(1)
+                    .tag(2)
 
                 SoundsView()
                     .tabItem {
                         Label("Sounds", systemImage: "waveform")
                     }
-                    .tag(2)
+                    .tag(3)
             }
             .tint(.orange)
             .preferredColorScheme(.dark)
