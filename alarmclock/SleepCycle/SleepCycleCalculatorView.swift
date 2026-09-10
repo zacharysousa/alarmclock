@@ -9,7 +9,7 @@ struct SleepCycleResult: Identifiable {
     let time: Date
     let cycles: Int
     var hours: Double { Double(cycles) * Double(cycleMinutes) / 60.0 }
-    var isRecommended: Bool { cycles >= 5 }
+    var isRecommended: Bool { cycles == 5 || cycles == 6 }
 }
 
 struct SleepCycleCalculatorView: View {
@@ -27,7 +27,9 @@ struct SleepCycleCalculatorView: View {
     @State private var fallAsleepMinutes: Double = defaultFallAsleepMinutes
     @State private var confirmationMessage: String?
 
-    private let cycleOptions = [6, 5, 4, 3]
+    /// Six options spanning a full night's worth of 90-minute sleep cycles,
+    /// with 5-6 cycles (7.5-9h) called out as the recommended range.
+    private let cycleOptions = [8, 7, 6, 5, 4, 3]
     private let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
 
     private var results: [SleepCycleResult] {
